@@ -213,7 +213,8 @@ class MultiMeasurementInitiator(GaussianInitiator):
                     sure_tracks.add(track)
                     self.holding_tracks.remove(track)
 
-            self.holding_tracks -= self.deleter.delete_tracks(self.holding_tracks)
+            self.holding_tracks -= self.deleter.delete_tracks(self.holding_tracks,
+                                                              timestamp=timestamp)
 
         self.holding_tracks |= self.initiator.initiate(
             detections - associated_detections, timestamp)
